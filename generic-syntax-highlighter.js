@@ -1,3 +1,5 @@
+/*! <https://github.com/tovic/generic-syntax-highlighter> */
+
 (function(win, doc) {
 
     function SH(s) {
