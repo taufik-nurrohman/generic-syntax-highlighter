@@ -26,12 +26,12 @@
                     // skip punctuations and "real" tags ...
                 } else if (/^(&lt;!\-\-)/.test(a) || /^&lt;\?\S*|\?&gt;$/.test(a)) {
                     a = '<span style="color:#008000;font-style:italic;">' + a + '</span>'; // HTML comments and templates
-                } else if (/^(\/\/|#\s+|\/\*)/.test(a)) {
-                    a = '<span style="color:#808080;font-style:italic;">' + a + '</span>'; // comments
                 } else if (/^&lt;!/.test(a)) {
                     a = '<span style="color:#4682B4;font-style:italic;">' + a + '</span>'; // document types
                 } else if (/^&lt;.*?&gt;$/.test(a)) {
                     a = '<span style="color:inherit;">' + SH_tags(a) + '</span>'; // tags
+                } else if (/^(\/\/|#\s+|\/\*)/.test(a)) {
+                    a = '<span style="color:#808080;font-style:italic;">' + a + '</span>'; // comments
                 } else if (/["'`]/.test(a[0])) {
                     a = '<span style="color:#008000;">' + a + '</span>'; // strings
                 } else if (/\//.test(a[0])) {
