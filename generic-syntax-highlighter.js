@@ -16,6 +16,7 @@
             '\'(?:\\\\.|[^\'\\n])*\'', // strings
             '`(?:\\\\.|[^`])*`', // strings
             '\\/[^\\n]+\\/[gimuy]*', // regular expressions
+            '\\$\\w+', // PHP variables
             '&amp;\\S+;', // entities
             '\\b(?:true|false)\\b', // booleans
             '(?:\\d*\\.)?\\d+', // numbers
@@ -40,10 +41,12 @@
                     a = '<span style="color:#0000FF;">' + a + '</span>'; // numbers
                 } else if (a === 'true' || a === 'false') {
                     a = '<span style="color:#A52A2A;font-weight:bold;">' + a + '</span>'; // booleans
+                } else if (a[0] === '$') {
+                    a = '<span style="font-weight:bold;">' + a + '</span>'; // PHP variables
                 } else if (/^&amp;\S+;$/.test(a)) {
                     a = '<span style="color:#FF4500;">' + a + '</span>' // entities
                 } else {
-                    a = '<span style="color:#FF0000;font-weight:bold;">' + a + '</span>'; // keywords
+                    a = '<span style="color:#FF0000;">' + a + '</span>'; // keywords
                 }
             }
             return a;
