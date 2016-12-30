@@ -12,7 +12,7 @@
             '"(?:\\\\.|[^"\\n])*"', // strings
             '\'(?:\\\\.|[^\'\\n])*\'', // strings
             '`(?:\\\\.|[^`])*`', // ES6 strings
-            '&lt;[\\w:-]+.*?&gt;', // HTML tags
+            '&lt;\\/?[\\w:!-]+.*?&gt;', // HTML tags
             '&lt;\\?\\S*', '\\?&gt;', // templates
             '\\/[^\\n]+\\/[gimuy]*', // regular expressions
             '\\$\\w+', // PHP variables
@@ -24,10 +24,10 @@
             if (a) {
                 if (/^(\W|<.*?>)$/.test(a)) {
                     // skip punctuations and "real" tags ...
-                } else if (/^(&lt;!\-\-)/.test(a)) {
-                    a = '<span style="color:#008000;font-style:italic;">' + a + '</span>'; // HTML comments
-                } else if (/^&lt;!/.test(a) || /^(&lt;\?\S*|\?&gt;)$/.test(a)) {
-                    a = '<span style="color:#4682B4;font-style:italic;">' + a + '</span>'; // document types and templates
+                } else if (/^(&lt;!\-\-)/.test(a) || /^(&lt;\?\S*|\?&gt;)$/.test(a)) {
+                    a = '<span style="color:#008000;font-style:italic;">' + a + '</span>'; // HTML comments and templates
+                } else if (/^&lt;!/.test(a)) {
+                    a = '<span style="color:#4682B4;font-style:italic;">' + a + '</span>'; // document types
                 } else if (/^&lt;.*?&gt;$/.test(a)) {
                     a = '<span style="color:inherit;">' + SH_tags(a) + '</span>'; // tags
                 } else if (/^(\/\/|#\s+|\/\*)/.test(a)) {
