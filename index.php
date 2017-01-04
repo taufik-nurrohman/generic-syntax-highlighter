@@ -13,48 +13,48 @@ require __DIR__ . '/generic-syntax-highlighter.php';
     </style>
   </head>
   <body>
-    <pre><code><?php echo SH('&lt;!-- comment --&gt;
-&lt;div class="foo" id="bar" title="foo \"bar \\\\\" ba\\\'z qux"&gt;
-  &lt;p&gt;lorem ipsum &amp;amp; dolor sit&lt;/p&gt;
-&lt;/div&gt;'); ?></code></pre>
-    <pre><code><?php echo SH('&lt;!DOCTYPE html&gt;
-&lt;html dir="ltr"&gt;
-  &lt;head&gt;
-    &lt;!-- comment --&gt;
-    &lt;title&gt;Test&lt;/title&gt;
-    &lt;style&gt;
+    <pre><code><?php echo SH(htmlentities('<!-- comment -->
+<div class="foo" id="bar" title="foo \\"bar \\\\\" ba\\\'z qux">
+  <p>lorem ipsum &amp; dolor sit</p>
+</div>')); ?></code></pre>
+    <pre><code><?php echo SH(htmlentities('<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <!-- comment -->
+    <title>Test</title>
+    <style>
     #foo {color:red}
     .bar {color:#fff}
-    &lt;/style&gt;
-    &lt;?php
+    </style>
+    <?php
 
     # do header ...
     echo do_header($_GET[\'foo\']);
 
-    ?&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;script&gt;
+    ?>
+  </head>
+  <body>
+    <script>
     // inline comment
     function foo(bar) {
         var v = /\s 123 true function\//g;
-        var w = <mark>"foo" + 4</mark>;
+        var w = "foo" + 4;
         var x = true;
         var y = 4 + 5 + 1.5 + .4;
-        var z = `&lt;div&gt;
-  &lt;div&gt;&lt;/div&gt;
-&lt;/div&gt;`;
+        var z = `<div>
+  <div></div>
+</div>`;
         /**
          * block comment
          */
-        return "string" + \'string\' + "string \\" str\\\'ing" + \'string \\\' str\\"ing\' + "" + \'\';
+        return "string" + \'string\' + "string \\" str\\\'ing" + \'string \\\' str\"ing\' + "" + \'\';
     }
-    &lt;/script&gt;
-  &lt;/body&gt;
-&lt;/html&gt;'); ?></code></pre>
+    </script>
+  </body>
+</html>')); ?></code></pre>
     <h2>Known Bugs</h2>
     <p>PHP tags in HTML attributes:</p>
-    <pre><code><?php echo SH('&lt;article id="post-&lt;?php echo $post-&gt;id; ?&gt;"&gt;'); ?></code></pre>
+    <pre><code><?php echo SH(htmlentities('<article id="post-<?php echo $post->id; ?>">')); ?></code></pre>
     <p><em>Currently not targeted for highlighting CSS syntax.</em></p>
   </body>
 </html>
