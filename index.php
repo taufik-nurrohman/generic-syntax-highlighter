@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+<?php
+
+require __DIR__ . '/generic-syntax-highlighter.php';
+
+?><!DOCTYPE html>
 <html dir="ltr">
   <head>
     <meta name="viewport" content="width=device-width">
@@ -9,11 +13,11 @@
     </style>
   </head>
   <body>
-    <pre><code>&lt;!-- comment --&gt;
-&lt;div class="foo" id="bar" title="foo \"bar \\\" ba\'z qux"&gt;
+    <pre><code><?php echo SH('&lt;!-- comment --&gt;
+&lt;div class="foo" id="bar" title="foo \"bar \\\\\" ba\\\'z qux"&gt;
   &lt;p&gt;lorem ipsum &amp;amp; dolor sit&lt;/p&gt;
-&lt;/div&gt;</code></pre>
-    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;/div&gt;'); ?></code></pre>
+    <pre><code><?php echo SH('&lt;!DOCTYPE html&gt;
 &lt;html dir="ltr"&gt;
   &lt;head&gt;
     &lt;!-- comment --&gt;
@@ -25,7 +29,7 @@
     &lt;?php
 
     # do header ...
-    echo do_header($_GET['foo']);
+    echo do_header($_GET[\'foo\']);
 
     ?&gt;
   &lt;/head&gt;
@@ -43,16 +47,14 @@
         /**
          * block comment
          */
-        return "string" + 'string' + "string \" str\'ing" + 'string \' str\"ing' + "" + '';
+        return "string" + \'string\' + "string \\" str\\\'ing" + \'string \\\' str\\"ing\' + "" + \'\';
     }
     &lt;/script&gt;
   &lt;/body&gt;
-&lt;/html&gt;</code></pre>
+&lt;/html&gt;'); ?></code></pre>
     <h2>Known Bugs</h2>
     <p>PHP tags in HTML attributes:</p>
-    <pre><code>&lt;article id="post-&lt;?php echo $post-&gt;id; ?&gt;"&gt;</code></pre>
+    <pre><code><?php echo SH('&lt;article id="post-&lt;?php echo $post-&gt;id; ?&gt;"&gt;'); ?></code></pre>
     <p><em>Currently not targeted for highlighting CSS syntax.</em></p>
-    <script src="generic-syntax-highlighter.js"></script>
-    <script>GSH(document.getElementsByTagName('code'));</script>
   </body>
 </html>
