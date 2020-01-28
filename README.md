@@ -1,7 +1,7 @@
 Generic Syntax Highlighter
 ==========================
 
-[Demo](https://tovic.github.io/generic-syntax-highlighter)
+[Demo](https://taufik-nurrohman.github.io/generic-syntax-highlighter)
 
 Usage
 -----
