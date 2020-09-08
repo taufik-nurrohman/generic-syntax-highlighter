@@ -1,4 +1,4 @@
-/*! <https://github.com/tovic/generic-syntax-highlighter> */
+/*! <https://github.com/taufik-nurrohman/generic-syntax-highlighter> */
 
 (function(win, doc) {
 
@@ -13,7 +13,7 @@
             '"(?:\\\\.|[^"\\n])*"', // strings
             '\'(?:\\\\.|[^\'\\n])*\'', // strings
             '`(?:\\\\.|[^`])*`', // ES6 strings
-            '&lt;\\/?[\\w:!-]+.*?&gt;', // HTML tags
+            '&lt;\\/?[\\w:!-]+(?!&lt;)*&gt;', // HTML tags
             '&lt;\\?\\S*', '\\?&gt;', // templates
             '\\/[^\\n]+\\/[gimuy]*', // regular expressions
             '\\$\\w+', // PHP variables
@@ -54,7 +54,7 @@
     }
 
     function SH_TAG(s) {
-        return s.replace(/&lt;(\/?)(\S+)(\s.*?)?&gt;/g, function(a, b, c, d) {
+        return s.replace(/&lt;(\/?)(\S+)(\s(?!&lt;)*)?&gt;/g, function(a, b, c, d) {
             c = '<span style="color:#800080;font-weight:bold;">' + c + '</span>';
             if (d) {
                 d = d.replace(/(\s+)([^\s=]+)(?:=("(?:\\.|[^"])*"|'(?:\\.|[^'])*'|[^\s"']+))?/g, function(a, b, c, d) {
