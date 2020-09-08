@@ -13,7 +13,7 @@
             '"(?:\\\\.|[^"\\n])*"', // strings
             '\'(?:\\\\.|[^\'\\n])*\'', // strings
             '`(?:\\\\.|[^`])*`', // ES6 strings
-            '&lt;\\/?[\\w:!-]+.*[^?]?&gt;', // HTML tags
+            '&lt;\\/?[\\w:!-]+.*(?<!&lt;)&gt;', // HTML tags
             '&lt;\\?\\S*', '\\?&gt;', // templates
             '\\/[^\\n]+\\/[gimuy]*', // regular expressions
             '\\$\\w+', // PHP variables
