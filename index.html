@@ -55,9 +55,10 @@
     &lt;/script&gt;
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-    <h2>Known Bugs</h2>
-    <p>PHP tags in HTML attributes:</p>
-    <pre><code>&lt;article id="post-&lt;?php echo $post-&gt;id; ?&gt;"&gt;</code></pre>
+    <pre><code>&lt;!-- Mixed HTML-PHP test --&gt;
+&lt;div class="&lt;?php echo $foo ? 'foo' : 'bar'; ?&gt;" id="foo"&gt;
+  &lt;?php echo $bar; ?&gt;
+&lt;/div&gt;</code></pre>
     <p><em>Currently not targeted for highlighting CSS syntax.</em></p>
     <script src="generic-syntax-highlighter.js"></script>
     <script>GSH(document.getElementsByTagName('code'));</script>

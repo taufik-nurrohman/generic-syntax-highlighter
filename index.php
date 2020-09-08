@@ -59,9 +59,6 @@ require __DIR__ . '/generic-syntax-highlighter.php';
     </script>
   </body>
 </html>')); ?></code></pre>
-    <h2>Known Bugs</h2>
-    <p>PHP tags in HTML attributes:</p>
-    <pre><code><?php echo SH(htmlentities('<article id="post-<?php echo $post->id; ?>">')); ?></code></pre>
     <p><em>Currently not targeted for highlighting CSS syntax.</em></p>
   </body>
 </html>
